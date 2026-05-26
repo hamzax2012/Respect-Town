@@ -67,10 +67,30 @@
             font-size: 0.95rem;
             color: #ccc;
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             background: rgba(0,0,0,0.3);
             padding: 15px;
             border-radius: 15px;
+        }
+
+        /* قسم المميزات الثابت في الواجهة */
+        .features-box {
+            text-align: right;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .features-box strong {
+            color: var(--light-gold);
+            display: block;
+            margin-bottom: 8px;
+            text-align: center;
+            font-size: 1rem;
         }
 
         .btn-list {
@@ -107,10 +127,7 @@
             transform: scale(1.03);
         }
 
-        .btn-solid { background: var(--gold); color: black; }
-        .btn-solid:hover { background: var(--light-gold); transform: scale(1.03); }
-
-        /* ستايل قائمة القوانين المنسدلة الاحترافية */
+        /* ستايل قائمة القوانين المنسدلة */
         .laws-container {
             display: none;
             margin-top: 15px;
@@ -156,16 +173,22 @@
 
 <div class="container">
     <div class="logo-container">
-        <img src="https://i.ibb.co/VmqpZpM/image.png" alt="Respect Town Logo" class="logo">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=300&auto=format&fit=crop" alt="Respect Town Logo" class="logo">
     </div>
 
     <h1>Respect - Town - S2 | 🇸🇦</h1>
 
     <div class="description">
-        <strong>✨ مميزات سيرفر ريسبكت تاون:</strong><br>
-        • تجربة حياة واقعية متكاملة فريدة من نوعها 🎭<br>
-        • نظام وظائف متطور وعصابات منظمة وحصريّة 💼<br>
-        • إدارة محترفة متواجدة لخدمتكم 24/7 🛠️
+        مرحباً بكم في الموقع الرسمي لسيرفر ريسبكت تاون للحياة الواقعية.
+    </div>
+
+    <div class="features-box">
+        <strong>✨ مميزات السيرفر الحصرية:</strong>
+        • 🎭 تجربة حياة واقعية متكاملة وفريدة من نوعها.<br>
+        • 💼 نظام وظائف متطور وعصابات منظمة وحصرية.<br>
+        • 🛠️ إدارة محترفة ومتعاونة متواجدة لخدمتكم 24/7.<br>
+        • 🏆 فعاليات يومية مميزة وجوائز فخمة ومستمرة.<br>
+        • 🚀 سيرفر قوي ومحمي بالكامل لضمان تجربة بدون لاق.
     </div>
 
     <div class="btn-list">
@@ -219,10 +242,6 @@
         <a class="btn btn-outline" onclick="alert('مؤسسي السيرفر:\n• أبو سويحل\n• خيال\n• يوسف\n• حربي\n• طلال')">
             <i class="fas fa-crown"></i> المؤسسين
         </a>
-
-        <a class="btn btn-solid" onclick="alert('المميزات الحصرية:\n• فعاليات يومية مميزة بجوائز فخمة\n• نظام حماية عالي وسيرفر قوي بدون لاق\n• اقتصاد متوازن يوفر تجربة واقعية ممتازة')">
-            <i class="fas fa-star"></i> المميزات
-        </a>
     </div>
 </div>
 
@@ -243,10 +262,8 @@
         if (content.style.display === 'block') {
             content.style.display = 'none';
         } else {
-            // إغلاق أي قانون آخر مفتوح أولاً ليبقى المظهر متناسقاً
             var allContents = document.querySelectorAll('.law-content');
             allContents.forEach(function(el) { el.style.display = 'none'; });
-            
             content.style.display = 'block';
         }
     }
