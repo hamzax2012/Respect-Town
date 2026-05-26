@@ -25,6 +25,7 @@
             align-items: center;
             min-height: 100vh;
             overflow-x: hidden;
+            padding: 20px 0;
         }
 
         .container {
@@ -92,11 +93,7 @@
             border: 1px solid transparent;
         }
 
-        .btn-discord {
-            background: #5865F2;
-            color: white;
-        }
-
+        .btn-discord { background: #5865F2; color: white; }
         .btn-discord:hover { background: #4752c4; transform: scale(1.03); }
 
         .btn-outline {
@@ -104,35 +101,71 @@
             border: 1px solid var(--gold);
             color: var(--gold);
         }
-
         .btn-outline:hover {
             background: var(--gold);
             color: black;
             transform: scale(1.03);
         }
 
-        .btn-solid {
-            background: var(--gold);
-            color: black;
+        .btn-solid { background: var(--gold); color: black; }
+        .btn-solid:hover { background: var(--light-gold); transform: scale(1.03); }
+
+        /* ستايل قائمة القوانين المنسدلة الاحترافية */
+        .laws-container {
+            display: none;
+            margin-top: 15px;
+            text-align: right;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-        .btn-solid:hover { background: var(--light-gold); transform: scale(1.03); }
+        .law-item {
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .law-item:last-child { border: none; margin: 0; padding: 0; }
+
+        .law-title {
+            color: var(--light-gold);
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            font-size: 0.95rem;
+        }
+
+        .law-content {
+            display: none;
+            color: #ddd;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-top: 5px;
+            padding: 8px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="logo-container">
-        <img src="https://cdn.discordapp.com/attachments/1384536194829779068/1503735303796428961/IMG_9909-1.gif?ex=6a046e22&is=6a031ca2&hm=5c042e43c212fc654ef95fe672f4947c76f0c052c0b81d05e3d216bd396c731f&" alt="Respect Town Logo" class="logo">
+        <img src="https://i.ibb.co/VmqpZpM/image.png" alt="Respect Town Logo" class="logo">
     </div>
 
     <h1>Respect - Town - S2 | 🇸🇦</h1>
 
     <div class="description">
-        <strong>✨ مميزات ريسبكت تاون:</strong><br>
-        • تجربة حياة واقعية متكاملة 🎭<br>
-        • نظام عصابات ووظائف متطور 💼<br>
-        • إدارة محترفة متواجدة 24/7 🛠️
+        <strong>✨ مميزات سيرفر ريسبكت تاون:</strong><br>
+        • تجربة حياة واقعية متكاملة فريدة من نوعها 🎭<br>
+        • نظام وظائف متطور وعصابات منظمة وحصريّة 💼<br>
+        • إدارة محترفة متواجدة لخدمتكم 24/7 🛠️
     </div>
 
     <div class="btn-list">
@@ -140,19 +173,84 @@
             <i class="fab fa-discord"></i> سيرفر الديسكورد
         </a>
 
-        <a class="btn btn-outline" onclick="alert('قوانين Respect Town:\n1. الاحترام المتبادل بين الجميع.\n2. يمنع السب والقذف نهائياً.\n3. الالتزام بقوانين الرول بلاي والواقعية.')">
+        <a class="btn btn-outline" onclick="toggleLaws()">
             <i class="fas fa-gavel"></i> القوانين
         </a>
 
-        <a class="btn btn-outline" onclick="alert('مؤسسي السيرفر:\n• أبو سويحل\n• خيال\n• يوسف\n• بندر\n• طلال')">
+        <div id="lawsContainer" class="laws-container">
+            <div class="law-item">
+                <div class="law-title" onclick="toggleLawContent('nlr')">قانون الحياة الجديدة - NLR <i class="fas fa-chevron-down"></i></div>
+                <div id="nlr" class="law-content">
+                    في حال إغمائك بشكل كامل لا يمكنك الكلام أو الحركة أو فعل أي شيء. <br>
+                    • في حال تم إسقاطك من قبل شخص وتم إنعاشك من قبل مسعفين، تستطيع تذكر جميع الأحداث.<br>
+                    • في حال تم إعطائك إبرة "في العيادة الخاصة" من أحد اللاعبين الذين لديهم عداوة معك، لا تستطيع تذكر أي شيء حصل لك (منها العداوات أو الأحداث).
+                </div>
+            </div>
+
+            <div class="law-item">
+                <div class="law-title" onclick="toggleLawContent('power')">الباور جيمنج - Power Gaming <i class="fas fa-chevron-down"></i></div>
+                <div id="power" class="law-content">
+                    هو استخدام الوسائل غير الموجودة في اللعبة للحصول على ميزة، أو عدم التوافق مع العالم بطريقة معقولة وبشكل واقعي. وهناك الكثير من المواقف والأمثلة التي تندرج تحت الـ Powergaming وتعتبر مخالفة صريحة للنظام.
+                </div>
+            </div>
+
+            <div class="law-item">
+                <div class="law-title" onclick="toggleLawContent('nvl')">الخوف على الحياة - NVL <i class="fas fa-chevron-down"></i></div>
+                <div id="nvl" class="law-content">
+                    هو عدم الخوف بشكل واقعي على حياتك عندما تتعرض للتهديد بالأسلحة أو بأذى شديد من وسائل أخرى. يعتبر الخوف على الحياة شيئاً أساسياً ومهماً جداً؛ مثال: إذا كانت هناك أداة أو سلاح يعرض حياتك للخطر، يجب عليك الانصياع وحماية حياتك.
+                </div>
+            </div>
+
+            <div class="law-item">
+                <div class="law-title" onclick="toggleLawContent('meta')">الميتا جيمنج - Metagaming <i class="fas fa-chevron-down"></i></div>
+                <div id="meta" class="law-content">
+                    هو استخدام أي معلومة تحصل عليها من خارج المدينة في الأحداث والأدوار داخلها. مثال: أي معلومة حصلت عليها من بث مباشر، أو ديسكورد، أو مقطع يوتيوب، كلها تعتبر مخالفة صريحة للنظام العام.
+                </div>
+            </div>
+
+            <div class="law-item">
+                <div class="law-title" onclick="toggleLawContent('rdm')">القتل العشوائي - RDM <i class="fas fa-chevron-down"></i></div>
+                <div id="rdm" class="law-content">
+                    هو قتل الأشخاص دون وجود سبب مقنع، أو بدون تهديد مسبق، أو بصورة عشوائية وبدون عداوة مسبقة. يعتبر القتل العشوائي ممنوعاً ومخالفاً تماماً للنظام العام للسيرفر.
+                </div>
+            </div>
+        </div>
+
+        <a class="btn btn-outline" onclick="alert('مؤسسي السيرفر:\n• أبو سويحل\n• خيال\n• يوسف\n• حربي\n• طلال')">
             <i class="fas fa-crown"></i> المؤسسين
         </a>
 
-        <a class="btn btn-solid" onclick="alert('المميزات:\n• فعاليات يومية\n• نظام حماية عالي\n• اقتصاد متوازن')">
+        <a class="btn btn-solid" onclick="alert('المميزات الحصرية:\n• فعاليات يومية مميزة بجوائز فخمة\n• نظام حماية عالي وسيرفر قوي بدون لاق\n• اقتصاد متوازن يوفر تجربة واقعية ممتازة')">
             <i class="fas fa-star"></i> المميزات
         </a>
     </div>
 </div>
+
+<script>
+    // دالة لفتح وإغلاق قائمة القوانين الرئيسية
+    function toggleLaws() {
+        var container = document.getElementById('lawsContainer');
+        if (container.style.display === 'block') {
+            container.style.display = 'none';
+        } else {
+            container.style.display = 'block';
+        }
+    }
+
+    // دالة فتح وإغلاق محتوى كل قانون على حدة
+    function toggleLawContent(id) {
+        var content = document.getElementById(id);
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+        } else {
+            // إغلاق أي قانون آخر مفتوح أولاً ليبقى المظهر متناسقاً
+            var allContents = document.querySelectorAll('.law-content');
+            allContents.forEach(function(el) { el.style.display = 'none'; });
+            
+            content.style.display = 'block';
+        }
+    }
+</script>
 
 </body>
 </html>
